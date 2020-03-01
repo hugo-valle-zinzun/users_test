@@ -1,0 +1,8 @@
+.pagination li {
+    padding-right: 4px;
+    font-weight: 700;
+}
+
+.pagination li:hover {
+    cursor: pointer;
+}

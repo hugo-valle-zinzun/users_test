@@ -1,0 +1,50 @@
+html
+    head
+        title= 'Registro de usuario'
+        link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css')
+        
+        script( src='https://code.jquery.com/jquery-3.4.1.min.js' integrity='sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=' crossorigin="anonymous")
+        script( src='https://kit.fontawesome.com/78b9978c31.js' crossorigin='anonymous')
+        
+        link( href='/public/style.css' rel='stylesheet')
+        script( src='/public/main.js')
+        
+    body
+        div.container
+            div.row.separatetop
+                div.col-12
+                    h3.text-muted='Registro de usuario'
+            form#addForm(method='POST' action='/api/user')
+                div.row.separatetop
+                    div.col-12
+                        strong
+                            label(for='nick') Nick:
+                        input#nick.form-control(type='text', placeholder='Nick' name='nick')
+                    div.col-12
+                        strong
+                            label(for='nombre') Nombre:
+                        input#nombre.form-control(type='text', placeholder='Nombre' name='nombre')
+                    div.col-12
+                        strong
+                            label(for='apellidos') Apellidos:
+                        input#apellidos.form-control(type='text', placeholder='Apellidos' name='apellidos')
+                    div.col-12
+                        strong
+                            label(for='password') Password:
+                        input#password.form-control(type='password' name='password')
+                    div.col-12
+                        strong
+                            label(for='rol') Rol:
+                        select#rol.form-control(name='rol')
+                            option(value='Admin')='Admin'
+                            option(value='Operador')='Operador'
+                            option(value='Administrativo')='Administrativo'
+                    div.col-12
+                        strong
+                            label(for='email') Email:
+                        input#email.form-control(type='email', placeholder='cuenta@email.com' name='email')
+                    div.col-12.text-right.separatetop
+                        a.btn.btn-danger(href='/api/') Volver a lista de usuarios
+                        span= ' '
+                        button.btn.btn-primary(type='submit') Registrar
+                    

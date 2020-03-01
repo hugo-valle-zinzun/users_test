@@ -1,0 +1,23 @@
+html
+    head
+        title= 'API de prueba'
+        link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css')
+        
+        script( src='https://code.jquery.com/jquery-3.4.1.min.js' integrity='sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=' crossorigin="anonymous")
+        script( src='https://kit.fontawesome.com/78b9978c31.js' crossorigin='anonymous')
+        
+        link( href='/public/style.css' rel='stylesheet')
+        script( src='/public/main.js')
+        
+    body
+        div.container
+            div.row
+                div.col-12
+                    if status
+                        div.alert.alert-success(role="alert")= message
+                    else
+                        div.alert.alert-danger(role="alert")= message
+                div.col-12
+                    a(href='/api/') Volver a lista de usuarios 
+                        i.fas.fa-th-list
+                    

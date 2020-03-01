@@ -1,0 +1,11 @@
+.separatetop {
+    margin-top: 30px;
+}
+
+.separatebottom {
+    margin-bottom: 50px;
+}
+
+#user_table .btn-link.btn-delete {
+    padding: 0;
+}

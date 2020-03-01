@@ -1,0 +1,80 @@
+html
+    head
+        title= 'API de prueba'
+        link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css')
+        
+        script( src='https://code.jquery.com/jquery-3.4.1.min.js' integrity='sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=' crossorigin="anonymous")
+        script( src='https://kit.fontawesome.com/78b9978c31.js' crossorigin='anonymous')
+        
+        link( href='/public/pagination.css' rel='stylesheet')
+        link( href='/public/style.css' rel='stylesheet')
+        script( src='/public/pagination.js')
+        script( src='/public/main.js')
+        
+    body
+        div.container
+            div.row.separatetop
+                div.col-12
+                    h1.text-muted='CRUD de Usuarios'
+                    hr
+                div.col-6
+                    div.row#roles_count
+                        div.col-12
+                            span.text-danger='Admin(s): '
+                            span.muted#div_count_Admin ?
+                        div.col-12
+                            span.text-success='Operadores: '
+                            span.muted#div_count_Operador ?
+                        div.col-12
+                            span.text-info='Administrativos: '
+                            span.muted#div_count_Administrativo ?
+                div.col-3.text-right
+                    a(href='getAddUser').btn.btn-primary Registrar Usuario
+                div.col-3.text-right
+                    select.form-control(name='state' id='maxRows')
+                        option(value='5000') Mostrar todos
+                        option(value='10') 10
+                        
+
+        div.container
+            div.row.separatetop
+                div.col-12
+                    table.table.table-bordered#user_table
+                        thead.thead-dark
+                            tr
+                                th= 'Nick'
+                                th= 'Nombre'
+                                th= 'Apellidos'
+                                th= 'Rol de usuario'
+                                th= 'Email'
+                                th
+                                    i.fas.fa-edit
+                                th
+                                    i.fas.fa-trash-alt
+                        tbody
+                            each user in users
+                                tr(id= 'tr_' + user._id)
+                                    td= user.nick
+                                    td= user.nombre
+                                    td= user.apellidos
+                                    td(class=(user.rol == 'Admin' ? 'text-danger' : (user.rol == 'Operador' ? 'text-success' : 'text-info')))= user.rol
+                                    td= user.email
+                                    td
+                                        a(href='user/' + user._id)
+                                            i.fas.fa-edit.text-warning
+                                    td
+                                        button.btn.btn-link.btn-delete(data-id=user._id data-nick=user.nick )
+                                            i.fas.fa-edit.text-danger
+        
+        div.container
+            div.row
+                div.col-12
+                    div.pagination-container
+                        nav
+                            ul.pagination
+                                li( data-page='prev')
+                                    span= '<'
+                                        span.sr-only (current)
+                                li(data-page='next' id='prev')
+                                    span= '>'
+                                        span.sr-only (current)
